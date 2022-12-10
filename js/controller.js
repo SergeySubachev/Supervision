@@ -34,8 +34,9 @@ function btnNextClick() {
                 case 0:
                     exercise = new ClassZoneExercise(3);
                     break;
-                // case 1:
-                //     break;
+                case 1:
+                    exercise = new CategoryAndGroupExercise(3);
+                    break;
                 // case 2:
                 //     break;
                 // case 3:

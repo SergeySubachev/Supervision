@@ -32,13 +32,17 @@ class OneInManySelectTest extends TestBase {
     GetHtmlElement() {
         const div = document.createElement("div");
         
-        const pCaption = document.createElement("u");
-        div.append(pCaption);
-        pCaption.innerHTML = this.caption;
+        if (this.caption != "") {
+            const pCaption = document.createElement("u");
+            div.append(pCaption);
+            pCaption.innerHTML = this.caption;
+        }
 
-        const pText = document.createElement("p");
-        div.append(pText);
-        pText.innerHTML = this.text;
+        if (this.text != "") {
+            const pText = document.createElement("p");
+            div.append(pText);
+            pText.innerHTML = this.text;
+        }
 
         const selector = document.createElement("select");
         selector.id = this.selectId;
