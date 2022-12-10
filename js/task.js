@@ -10,6 +10,7 @@ class TaskBase {
         for (let i = 0; i < this.tests.length; i++) {
             result += this.tests[i].GetResult();            
         }
+        result /= this.tests.length;
         return result;
     }
 }
