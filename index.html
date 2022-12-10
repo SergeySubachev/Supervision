@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icon32.png">
+    <link rel="icon" type="image/png" sizes="114x114" href="img/icon114.png">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-icon" href="img/icon57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/icon72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/icon114.png" />
+
+    <title>Проверка соответствия электрооборудования</title>
+
+    <link rel="stylesheet" href="w3.css">
+    <script src="js/utils.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/classZoneTask.js"></script>
+    <script src="js/exercises.js"></script>
+    <script src="js/classZoneExercise.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+
+<body>
+    <div id="divSelectExercise" class="w3-container w3-padding w3-large">
+        <div class="w3-container w3-round w3-margin w3-teal w3-center">
+            <h3>Проверка соответствия электрооборудования и кабельных изделий классу пожароопасных и взрывоопасных зон. Тренажер решения задач</h3>
+        </div>
+        <p style="margin: 0; padding: 0;"><u>Выберите задание:</u></p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=0 onchange="OnSelectExerciseChange(this)">
+            <label>Определениие класса зоны по ПУЭ</label>
+        </p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=1 onchange="OnSelectExerciseChange(this)">
+            <label>Определение категории и группы взрывоопасной смеси</label>
+        </p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=2 onchange="OnSelectExerciseChange(this)">
+            <label>Расшифровка маркировки взрывозащищенного электрооборудования</label>
+        </p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=3 onchange="OnSelectExerciseChange(this)">
+            <label>Проверка соответствия электрооборудования классу взрывоопасной зоны</label>
+        </p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=4 onchange="OnSelectExerciseChange(this)">
+            <label>Проверка соответствия электрооборудования классу пожароопасной зоны</label>
+        </p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=5 onchange="OnSelectExerciseChange(this)">
+            <label>Расшифровка маркировки проводов и кабелей</label>
+        </p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=6 onchange="OnSelectExerciseChange(this)">
+            <label>Проверка соответствия проводов и кабелей классу пожароопасной зоны</label>
+        </p>
+        <p style="margin: 0; padding: 0;">
+            <input class="w3-radio" type="radio" name="selectExercise" value=7 onchange="OnSelectExerciseChange(this)">
+            <label>Проверка соответствия проводов и кабелей классу взрывоопасной зоны</label>
+        </p>
+    </div>
+
+    <div id="divExercise" class="w3-container w3-padding w3-large"></div>
+    
+    <div id="divResult" class="w3-container w3-padding w3-large"></div>
+    
+    <button id="btnNext" class='w3-button w3-round w3-teal w3-margin' onclick="btnNextClick()">Далее</button>
+
+    <div class="w3-blue-gray w3-padding w3-tiny">
+        <a class="w3-hover-blue" target="_blank"
+            href="https://www.elec.ru/library/direction/pue/razdel-7-3-4.html">Правила устройства электроустановок</a>
+        <p class="w3-right-align">© Уральский институт ГПС МЧС России, 2022</p>
+    </div>
+</body>
+
+</html>
