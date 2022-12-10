@@ -1,8 +1,7 @@
-﻿class Task {
+﻿class TestBase {
     caption = "";
     text = "";
     options = [];
-    answered = false;
 
     constructor(caption, text, options) {
         this.caption = caption;
@@ -10,19 +9,16 @@
         this.options = options;
     }
 
-    OnAnswer() {
-        this.answered = true;
+    IsComplete() {
+        return true;
     }
 
     GetResult() {
-        if (this.answered)
-            return 1;
-        else
-            return 0;
+        return 1;
     }
 }
 
-class OneInManySelectTest extends Task {
+class OneInManySelectTest extends TestBase {
     selectId = "";
     correctOption = "";
     answeredOption;
@@ -64,23 +60,24 @@ class OneInManySelectTest extends Task {
         return div;
     }
 
-    OnAnswer() {
+    IsComplete() {
         const val = document.getElementById(this.selectId).value;
         if (val != "none") {
-            this.answered = true;
             this.answeredOption = val;
+            return true;
         }
+        return false;
     }
 
     GetResult() {
-        if (this.answered && (this.answeredOption == this.correctOption))
+        if (this.answeredOption == this.correctOption)
             return 1;
         else
             return 0;
     }
 }
 
-class OneInManyRadioTest extends Task {
+class OneInManyRadioTest extends TestBase {
     TestText = "";
     SelectID = "OneInManyTest";
     Options = [];
@@ -92,46 +89,46 @@ class OneInManyRadioTest extends Task {
         this.SelectID = selectId;
     }
 
-    OnAnswer() {
-        //если внутри select перечислены option (т.е. combobox)
-        let options = $(`#${this.SelectID} option`);
-        if (options.length > 0) {
-            for (var i = 0; i < options.length; i++) {
-                let opt = options[i];
-                if (opt.selected) {
-                    if (!opt.disabled) {
-                        this.AnsweredOption = opt.value;
-                        this.answered = true;
-                    }
-                    return;
-                }
-            }
-            return;
-        }
+    IsComplete() {
+        // //если внутри select перечислены option (т.е. combobox)
+        // let options = $(`#${this.SelectID} option`);
+        // if (options.length > 0) {
+        //     for (var i = 0; i < options.length; i++) {
+        //         let opt = options[i];
+        //         if (opt.selected) {
+        //             if (!opt.disabled) {
+        //                 this.AnsweredOption = opt.value;
+        //                 this.answered = true;
+        //             }
+        //             return;
+        //         }
+        //     }
+        //     return;
+        // }
 
-        //если radio
-        options = $(`#${this.SelectID} input`);
-        if (options.length > 0) {
-            for (var i = 0; i < options.length; i++) {
-                let opt = options[i];
-                if (opt.checked) {
-                    this.AnsweredOption = opt.value;
-                    this.answered = true;
-                    return;
-                }
-            }   
-        }        
+        // //если radio
+        // options = $(`#${this.SelectID} input`);
+        // if (options.length > 0) {
+        //     for (var i = 0; i < options.length; i++) {
+        //         let opt = options[i];
+        //         if (opt.checked) {
+        //             this.AnsweredOption = opt.value;
+        //             this.answered = true;
+        //             return;
+        //         }
+        //     }   
+        // }        
     }
 
     GetResult() {
-        if (this.answered && (this.AnsweredOption == this.CorrectOption))
+        if (this.AnsweredOption == this.CorrectOption)
             return 1;
         else
             return 0;
     }
 }
 
-class ManyInManyTest extends Task {
+class ManyInManyTest extends TestBase {
     TestText = "";
     SelectID = "ManyInManyTest";
     Options = [];
@@ -143,22 +140,19 @@ class ManyInManyTest extends Task {
         this.SelectID = selectId;
     }
 
-    OnAnswer() {
-        this.AnsweredOptions = [];
-        let options = $(`#${this.SelectID} input`); //checkboxes
-        for (var i = 0; i < options.length; i++) {
-            let opt = options[i];
-            if (opt.checked) {
-                this.AnsweredOptions.push(opt.value);
-            }
-        }
-        this.answered = true;
+    IsComplete() {
+        // this.AnsweredOptions = [];
+        // let options = $(`#${this.SelectID} input`); //checkboxes
+        // for (var i = 0; i < options.length; i++) {
+        //     let opt = options[i];
+        //     if (opt.checked) {
+        //         this.AnsweredOptions.push(opt.value);
+        //     }
+        // }
+        // this.answered = true;
     }
 
     GetResult() {
-        if (!this.answered)
-            return 0;
-
         //если что-то не отметили - 0
         for (var i = 0; i < this.CorrectOptions.length; i++) {
             if (this.AnsweredOptions.indexOf(this.CorrectOptions[i]) < 0)

@@ -1,6 +1,7 @@
-﻿class ClassZoneTask extends OneInManySelectTest {
+﻿class ClassZoneTask extends TaskBase {
     constructor(text, correctOption) {
-        super(
+        super();
+        this.tests.push(new OneInManySelectTest(
             "classZoneTask", 
             "Определите класс зоны (или тип помещения):", 
             text, 
@@ -11,11 +12,15 @@
                 "П-I", "П-II", "П-IIа", "П-III", 
                 "В-I", "В-Iа", "В-Iб", "В-Iг", "В-II", "В-IIа"
             ], 
-            correctOption);
+            correctOption));
+    }
+
+    GetHtmlElement() {
+        return this.tests[0].GetHtmlElement();
     }
 }
 
-let ClassZoneTasksBase = [
+let ClassZoneTasks = [
     new ClassZoneTask("В помещении отделения открытой промывки узлов и деталей уайт-спиритом (ЛВЖ), вентиляция отсутствует.", "В-I"),
     new ClassZoneTask("В цехе выделяется изобутан (горючий газ) при нормальном режиме. Вентиляция отсутствует.", "В-I"),
     new ClassZoneTask("Отделение открытой промывки узлов и деталей уайт-спиритом (ЛВЖ). Вентиляция отсутствует.", "В-I"),

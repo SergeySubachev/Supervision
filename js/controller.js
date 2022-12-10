@@ -60,8 +60,7 @@ function btnNextClick() {
             break;
         case StateEnum.EXERCISE:
             const task = exercise.GetCurrentTask();
-            task.OnAnswer();
-            if (task.answered) {
+            if (task.IsComplete()) {
                 if (exercise.Next()) {
                     divExercise.innerHTML = "";
                     divExercise.appendChild(exercise.GetCurrentTask().GetHtmlElement());
