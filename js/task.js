@@ -2,6 +2,11 @@ class TaskBase {
     tests = [];
 
     IsComplete() {
+        for (const test of this.tests) {
+            if (!test.IsComplete()) {
+                return false;
+            }
+        }
         return true;
     }
 
