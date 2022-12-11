@@ -8,14 +8,12 @@
 
         this.tests.push(new OneInManySelectTest(
             "Категория:",
-            "",
             ["IIA", "IIB", "IIC"],
             category
         ));
 
         this.tests.push(new OneInManySelectTest(
             "Группа:",
-            "",
             ["T1", "T2", "T3", "T4", "T5", "T6"],
             group
         ));

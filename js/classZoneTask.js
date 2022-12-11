@@ -2,7 +2,6 @@
     constructor(text, correctOption) {
         super();
         this.tests.push(new OneInManySelectTest(
-            "Определите класс зоны (или тип помещения):", 
             text, 
             [
                 "Сухое (нормальное) помещение",
@@ -16,7 +15,15 @@
     }
 
     GetHtmlElement() {
-        return this.tests[0].GetHtmlElement();
+        const div = document.createElement("div");
+
+        const caption = document.createElement("h3");
+        caption.innerHTML = "Определите класс зоны (или тип помещения):";
+        div.appendChild(caption);
+
+        div.appendChild(this.tests[0].GetHtmlElement());
+
+        return div;
     }
 }
 

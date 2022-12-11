@@ -1,10 +1,8 @@
 ﻿class TestBase {
-    caption = "";
     text = "";
     options = [];
 
-    constructor(caption, text, options) {
-        this.caption = caption;
+    constructor(text, options) {
         this.text = text;
         this.options = options;
     }
@@ -23,20 +21,14 @@ class OneInManySelectTest extends TestBase {
     correctOption = "";
     answeredOption;
 
-    constructor(caption, text, options, correctOption) {
-        super(caption, text, options);
+    constructor(text, options, correctOption) {
+        super(text, options);
         this.correctOption = correctOption;
     }
 
     GetHtmlElement() {
         const div = document.createElement("div");
         
-        if (this.caption != "") {
-            const pCaption = document.createElement("u");
-            div.append(pCaption);
-            pCaption.innerHTML = this.caption;
-        }
-
         if (this.text != "") {
             const pText = document.createElement("p");
             div.append(pText);
