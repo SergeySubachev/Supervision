@@ -34,7 +34,7 @@ class OneInManySelectTest extends TestBase {
         if (this.text != "") {
             const pText = document.createElement("p");
             pText.innerHTML = this.text;
-            pText.style.lineHeight = "0%";
+            pText.style.lineHeight = "1.0";
             div.append(pText);
         }
 
