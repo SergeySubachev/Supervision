@@ -18,11 +18,13 @@
 
 class OneInManySelectTest extends TestBase {
     selectElement = HTMLElement.prototype;
+    defaultValue = "";
     correctOption = "";
-    answeredOption;
+    answeredOption = "";
 
-    constructor(text, options, correctOption) {
+    constructor(text, options, correctOption, defaultValue = "Выберите ответ...") {
         super(text, options);
+        this.defaultValue = defaultValue;
         this.correctOption = correctOption;
     }
 
@@ -40,7 +42,7 @@ class OneInManySelectTest extends TestBase {
 
         var option = document.createElement("option");
         this.selectElement.appendChild(option);
-        option.innerText = "Выберите ответ...";
+        option.innerText = this.defaultValue;
         option.value = "none";
         option.disabled = true;
         option.selected = true;
