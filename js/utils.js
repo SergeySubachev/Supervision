@@ -1,4 +1,4 @@
-﻿function RandomSelect(options, count) {
+﻿function RandomSelect(options, count = 1) {
     if (count > options.length)
         count = options.length;
 
