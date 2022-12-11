@@ -33,8 +33,9 @@ class OneInManySelectTest extends TestBase {
         
         if (this.text != "") {
             const pText = document.createElement("p");
-            div.append(pText);
             pText.innerHTML = this.text;
+            pText.style.lineHeight = "1.0";
+            div.append(pText);
         }
 
         this.selectElement = document.createElement("select");
@@ -125,40 +126,69 @@ class OneInManyRadioTest extends TestBase {
 }
 
 class ManyInManyTest extends TestBase {
-    TestText = "";
-    SelectID = "ManyInManyTest";
-    Options = [];
-    CorrectOptions = [];
-    AnsweredOptions = [];
+    divElement = HTMLElement.prototype;
+    correctOptions = [];
+    answeredOptions = [];
 
-    constructor(selectId) {
-        super();
-        this.SelectID = selectId;
+    constructor(text, options, correctOptions) {
+        super(text, options);
+        this.correctOptions = correctOptions;
     }
 
+    GetHtmlElement() {
+        this.divElement = document.createElement("div");
+        
+        if (this.text != "") {
+            const pText = document.createElement("p");
+            pText.innerHTML = this.text;
+            pText.style.lineHeight = "1.0";
+            this.divElement.append(pText);
+        }
+
+        for (const it of this.options) {
+            const p = document.createElement("p");
+            p.style.lineHeight = "1.0";
+            this.divElement.appendChild(p);
+    
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = it;
+            checkbox.style.marginRight = "6px";
+            p.appendChild(checkbox);
+
+            const span = document.createElement("span");
+            span.innerText = it;
+            p.appendChild(span);
+        }
+
+        return this.divElement;
+    }
+
+    //если отметили хотя бы один вариант
     IsComplete() {
-        // this.AnsweredOptions = [];
-        // let options = $(`#${this.SelectID} input`); //checkboxes
-        // for (var i = 0; i < options.length; i++) {
-        //     let opt = options[i];
-        //     if (opt.checked) {
-        //         this.AnsweredOptions.push(opt.value);
-        //     }
-        // }
-        // this.answered = true;
+        this.answeredOptions = [];
+        let inputs = this.divElement.getElementsByTagName("input");
+        for (const input of inputs) {
+            if (input.checked) {
+                this.answeredOptions.push(input.value);
+            }
+        }
+        return this.answeredOptions.length > 0;
     }
 
     GetResult() {
         //если что-то не отметили - 0
-        for (var i = 0; i < this.CorrectOptions.length; i++) {
-            if (this.AnsweredOptions.indexOf(this.CorrectOptions[i]) < 0)
+        for (const it of this.correctOptions) {
+            if (this.answeredOptions.indexOf(it) < 0) {
                 return 0;
+            }
         }
 
         //если отметили что-то лишнее - 0
-        for (var i = 0; i < this.AnsweredOptions.length; i++) {
-            if (this.CorrectOptions.indexOf(this.AnsweredOptions[i]) < 0)
+        for (const it of this.answeredOptions) {
+            if (this.correctOptions.indexOf(it) < 0) {
                 return 0;
+            }
         }
 
         //только если полное совпадение отмеченных и неотмеченных

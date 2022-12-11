@@ -12,8 +12,8 @@ class TaskBase {
 
     GetResult() {
         let result = 0;
-        for (let i = 0; i < this.tests.length; i++) {
-            result += this.tests[i].GetResult();            
+        for (const test of this.tests) {
+            result += test.GetResult();
         }
         result /= this.tests.length;
         return result;

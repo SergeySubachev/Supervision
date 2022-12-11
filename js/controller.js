@@ -37,8 +37,9 @@ function btnNextClick() {
                 case 1:
                     exercise = new CategoryAndGroupExercise(3);
                     break;
-                // case 2:
-                //     break;
+                case 2:
+                    exercise = new DeviceMarkingExercise(1);
+                    break;
                 // case 3:
                 //     break;
                 // case 4:

@@ -19,11 +19,11 @@
 
 function LevelToString(level) {
     switch (level) {
-        case "0":
+        case 0:
             return "особовзрывобезопасное электрооборудование";
-        case "1":
+        case 1:
             return "взрывобезопасное электрооборудование";
-        case "2":
+        case 2:
             return "электрооборудование повышенной надежности против взрыва";
         default:
             alert("Ошибка LevelToString");
