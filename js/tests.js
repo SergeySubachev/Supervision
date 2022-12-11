@@ -19,13 +19,12 @@
 }
 
 class OneInManySelectTest extends TestBase {
-    selectId = "";
+    selectElement = HTMLElement.prototype;
     correctOption = "";
     answeredOption;
 
-    constructor(selectId, caption, text, options, correctOption) {
+    constructor(caption, text, options, correctOption) {
         super(caption, text, options);
-        this.selectId = selectId;
         this.correctOption = correctOption;
     }
 
@@ -44,12 +43,11 @@ class OneInManySelectTest extends TestBase {
             pText.innerHTML = this.text;
         }
 
-        const selector = document.createElement("select");
-        selector.id = this.selectId;
-        div.append(selector);
+        this.selectElement = document.createElement("select");
+        div.append(this.selectElement);
 
         var option = document.createElement("option");
-        selector.appendChild(option);
+        this.selectElement.appendChild(option);
         option.innerText = "Выберите ответ...";
         option.value = "none";
         option.disabled = true;
@@ -58,14 +56,14 @@ class OneInManySelectTest extends TestBase {
         for (const it of this.options) {
             option = document.createElement("option");
             option.innerText = it;
-            selector.appendChild(option);
+            this.selectElement.appendChild(option);
         }
 
         return div;
     }
 
     IsComplete() {
-        const val = document.getElementById(this.selectId).value;
+        const val = this.selectElement.value;
         if (val != "none") {
             this.answeredOption = val;
             return true;

@@ -2,7 +2,6 @@
     constructor(text, correctOption) {
         super();
         this.tests.push(new OneInManySelectTest(
-            "classZoneTask", 
             "Определите класс зоны (или тип помещения):", 
             text, 
             [

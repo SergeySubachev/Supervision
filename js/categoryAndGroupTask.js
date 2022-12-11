@@ -7,7 +7,6 @@
         this.substanceName = substanceName;
 
         this.tests.push(new OneInManySelectTest(
-            "CategoryTest",
             "Категория:",
             "",
             ["IIA", "IIB", "IIC"],
@@ -15,7 +14,6 @@
         ));
 
         this.tests.push(new OneInManySelectTest(
-            "GroupTest",
             "Группа:",
             "",
             ["T1", "T2", "T3", "T4", "T5", "T6"],
