@@ -40,8 +40,9 @@ function btnNextClick() {
                 case 2:
                     exercise = new DeviceMarkingExercise(1);
                     break;
-                // case 3:
-                //     break;
+                case 3:
+                    exercise = new DeviceCheckExercise(1);
+                    break;
                 // case 4:
                 //     break;
                 // case 5:

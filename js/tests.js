@@ -34,7 +34,7 @@ class OneInManySelectTest extends TestBase {
         if (this.text != "") {
             const pText = document.createElement("p");
             pText.innerHTML = this.text;
-            pText.style.lineHeight = "1.0";
+            pText.style.lineHeight = "0%";
             div.append(pText);
         }
 
@@ -75,50 +75,59 @@ class OneInManySelectTest extends TestBase {
 }
 
 class OneInManyRadioTest extends TestBase {
-    TestText = "";
-    SelectID = "OneInManyTest";
-    Options = [];
-    CorrectOption = "";
-    AnsweredOption;
+    divElement = HTMLElement.prototype;
+    correctOption = "";
+    answeredOption = "";
 
-    constructor(selectId) {
-        super();
-        this.SelectID = selectId;
+    constructor(text, options, correctOption) {
+        super(text, options);
+        this.correctOption = correctOption;
+    }
+
+    GetHtmlElement() {
+        this.divElement = document.createElement("div");
+        
+        if (this.text != "") {
+            const pText = document.createElement("p");
+            pText.innerHTML = this.text;
+            pText.style.lineHeight = "1.0";
+            pText.style.marginBottom = "0%";
+            this.divElement.append(pText);
+        }
+
+        for (const it of this.options) {
+            const p = document.createElement("p");
+            p.style.lineHeight = "1.0";
+            p.style.margin = "0%";
+            this.divElement.appendChild(p);
+    
+            const radio = document.createElement("input");
+            radio.type = "radio";
+            radio.value = it;
+            radio.style.marginRight = "6px";
+            p.appendChild(radio);
+
+            const span = document.createElement("span");
+            span.innerText = it;
+            p.appendChild(span);
+        }
+
+        return this.divElement;
     }
 
     IsComplete() {
-        // //если внутри select перечислены option (т.е. combobox)
-        // let options = $(`#${this.SelectID} option`);
-        // if (options.length > 0) {
-        //     for (var i = 0; i < options.length; i++) {
-        //         let opt = options[i];
-        //         if (opt.selected) {
-        //             if (!opt.disabled) {
-        //                 this.AnsweredOption = opt.value;
-        //                 this.answered = true;
-        //             }
-        //             return;
-        //         }
-        //     }
-        //     return;
-        // }
-
-        // //если radio
-        // options = $(`#${this.SelectID} input`);
-        // if (options.length > 0) {
-        //     for (var i = 0; i < options.length; i++) {
-        //         let opt = options[i];
-        //         if (opt.checked) {
-        //             this.AnsweredOption = opt.value;
-        //             this.answered = true;
-        //             return;
-        //         }
-        //     }   
-        // }        
+        let inputs = this.divElement.getElementsByTagName("input");
+        for (const input of inputs) {
+            if (input.checked) {
+                this.answeredOption = input.value;
+                return true;
+            }
+        }
+        return false;       
     }
 
     GetResult() {
-        if (this.AnsweredOption == this.CorrectOption)
+        if (this.answeredOption == this.correctOption)
             return 1;
         else
             return 0;
@@ -142,12 +151,14 @@ class ManyInManyTest extends TestBase {
             const pText = document.createElement("p");
             pText.innerHTML = this.text;
             pText.style.lineHeight = "1.0";
+            pText.style.marginBottom = "0%";
             this.divElement.append(pText);
         }
 
         for (const it of this.options) {
             const p = document.createElement("p");
             p.style.lineHeight = "1.0";
+            p.style.margin = "0%";
             this.divElement.appendChild(p);
     
             const checkbox = document.createElement("input");
