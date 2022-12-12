@@ -163,14 +163,4 @@ class CabelCheckTask extends TaskBase {
 
         return div;
     }
-
-    // GetResult() {
-    //     //конструкция - 4 или 6 тестов; проверка соответствия - последние 3
-    //     const cabelPartsTests = this.tests.slice(0, -3);
-    //     const cabelCheckTests = this.tests.slice(-3);
-    //     const cabelPartsScore = cabelPartsTests.reduce((partialSum, a) => partialSum + a.GetResult(), 0);
-    //     const cabelCheckScore = cabelCheckTests.reduce((partialSum, a) => partialSum + a.GetResult(), 0);
-    //     // result.push(new ResultBlock("Расшифровка маркировки кабеля силовой сети", cabelPartsScore / cabelPartsTests.length));
-    //     // result.push(new ResultBlock("Проверка соответствия кабеля силовой сети", cabelCheckScore / cabelCheckTests.length));
-    // }
 }

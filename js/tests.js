@@ -107,6 +107,7 @@ class OneInManyRadioTest extends TestBase {
             radio.name = this.text;
             radio.value = it;
             radio.style.marginRight = "6px";
+
             p.appendChild(radio);
 
             const span = document.createElement("span");

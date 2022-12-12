@@ -46,12 +46,9 @@ function btnNextClick() {
                 case 4:
                     exercise = new CabelCheckExercise(1);
                     break;
-                // case 5:
-                //     break;
-                // case 6:
-                //     break;
-                // case 7:
-                //     break;
+                case 5:
+                    exercise = new WireCheckExercise(1);
+                    break;
                 default:
                     return;
             }
