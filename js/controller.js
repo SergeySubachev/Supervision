@@ -30,34 +30,37 @@ function OnSelectExerciseChange(option) {
 function btnNextClick() {
     switch (state) {
         case StateEnum.SELECTEXERCISE:
-            switch (exerciseIndex) {
-                case 0:
-                    exercise = new ClassZoneExercise(3);
-                    break;
-                case 1:
-                    exercise = new CategoryAndGroupExercise(3);
-                    break;
-                case 2:
-                    exercise = new DeviceMarkingExercise(1);
-                    break;
-                case 3:
-                    exercise = new DeviceCheckExercise(1);
-                    break;
-                case 4:
-                    exercise = new CabelCheckExercise(1);
-                    break;
-                case 5:
-                    exercise = new WireCheckExercise(1);
-                    break;
-                default:
-                    return;
+            const count = document.getElementById("tbCount").value;
+            if (count > 0) {
+                switch (exerciseIndex) {
+                    case 0:
+                        exercise = new ClassZoneExercise(count);
+                        break;
+                    case 1:
+                        exercise = new CategoryAndGroupExercise(count);
+                        break;
+                    case 2:
+                        exercise = new DeviceMarkingExercise(count);
+                        break;
+                    case 3:
+                        exercise = new DeviceCheckExercise(count);
+                        break;
+                    case 4:
+                        exercise = new CabelCheckExercise(count);
+                        break;
+                    case 5:
+                        exercise = new WireCheckExercise(count);
+                        break;
+                    default:
+                        return;
+                }
+                document.getElementById("divSelectExercise").hidden = true;
+                exercise.Begin();
+                divExercise.innerHTML = "";
+                divExercise.appendChild(exercise.GetCurrentTask().GetHtmlElement());
+                startTime = new Date().getTime();
+                state = StateEnum.EXERCISE;
             }
-            document.getElementById("divSelectExercise").hidden = true;
-            exercise.Begin();
-            divExercise.innerHTML = "";
-            divExercise.appendChild(exercise.GetCurrentTask().GetHtmlElement());
-            startTime = new Date().getTime();
-            state = StateEnum.EXERCISE;
             break;
         case StateEnum.EXERCISE:
             const task = exercise.GetCurrentTask();

@@ -68,7 +68,7 @@ class DeviceCheckTask extends TaskBase {
         const div = document.createElement("div");
 
         const caption = document.createElement("h3");
-        caption.innerText = "Проверка соответствия";
+        caption.innerText = "Проверка соответствия электрооборудования классу взрывоопасной зоны";
         div.appendChild(caption);
 
         const pClassZone = document.createElement("p");
