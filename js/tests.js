@@ -39,6 +39,7 @@ class OneInManySelectTest extends TestBase {
         }
 
         this.selectElement = document.createElement("select");
+        this.selectElement.classList.add("w3-select");
         div.append(this.selectElement);
 
         var option = document.createElement("option");
@@ -103,6 +104,7 @@ class OneInManyRadioTest extends TestBase {
     
             const radio = document.createElement("input");
             radio.type = "radio";
+            radio.name = this.text;
             radio.value = it;
             radio.style.marginRight = "6px";
             p.appendChild(radio);

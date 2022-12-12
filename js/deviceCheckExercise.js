@@ -6,10 +6,10 @@
 
         for (let i = 0; i < tasksCount; i++) {
             //класс зоны
-            const classZone = RandomSelect(["В-I", "В-Iа", "В-Iг"], 1)[0];
+            const classZone = RandomSelectOne(["В-I", "В-Iа", "В-Iг"]);
 
             //категория, группа
-            const categoryAndGroupTask = RandomSelect(CategoryAndGroupTasks, 1)[0];
+            const categoryAndGroupTask = RandomSelectOne(CategoryAndGroupTasks);
 
             //маркировка
             const deviceMarkingTask = new DeviceMarkingTask();
@@ -33,7 +33,7 @@
                     DeviceName: "Переносной светильник"
                 }
             ];
-            const selectedDeviceType = RandomSelect(deviceTypes, 1)[0];
+            const selectedDeviceType = RandomSelectOne(deviceTypes);
 
             //проверка соответствия
             this.tasks.push(new DeviceCheckTask(

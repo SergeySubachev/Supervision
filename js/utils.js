@@ -1,4 +1,4 @@
-﻿function RandomSelect(options, count = 1) {
+﻿function RandomSelect(options, count) {
     if (count > options.length)
         count = options.length;
 
@@ -15,6 +15,10 @@
     }
 
     return result;
+}
+
+function RandomSelectOne(options) {
+    return RandomSelect(options, 1)[0];
 }
 
 function LevelToString(level) {

@@ -43,8 +43,9 @@ function btnNextClick() {
                 case 3:
                     exercise = new DeviceCheckExercise(1);
                     break;
-                // case 4:
-                //     break;
+                case 4:
+                    exercise = new CabelCheckExercise(1);
+                    break;
                 // case 5:
                 //     break;
                 // case 6:

@@ -54,7 +54,7 @@ class CabelThreadTest extends OneInManySelectTest {
             return item.description;
         })
         super("", options, null, "???");
-        this.correctOptionObject = RandomSelect(optionsObjects);
+        this.correctOptionObject = RandomSelectOne(optionsObjects);
         this.correctOption = this.correctOptionObject.description;
     }
 }
@@ -78,7 +78,7 @@ class CabelIsolateTest extends OneInManySelectTest {
             return item.description;
         })
         super("", options, null, "???");
-        this.correctOptionObject = RandomSelect(optionsObjects);
+        this.correctOptionObject = RandomSelectOne(optionsObjects);
         this.correctOption = this.correctOptionObject.description;
     }
 }
@@ -99,8 +99,8 @@ class CabelCoverTest extends OneInManySelectTest {
             return item.description;
         })
         super("", options, null, "???");
-        this.correctOptionObject = RandomSelect(optionsObjects);
-        this.correctOption = this.correctOptionObject.Description;
+        this.correctOptionObject = RandomSelectOne(optionsObjects);
+        this.correctOption = this.correctOptionObject.description;
     }
 }
 
@@ -118,8 +118,8 @@ class CabelBronTest extends OneInManySelectTest {
             return item.description;
         })
         super("", options, null, "???");
-        this.correctOptionObject = RandomSelect(optionsObjects);
-        this.correctOption = this.correctOptionObject.Description;
+        this.correctOptionObject = RandomSelectOne(optionsObjects);
+        this.correctOption = this.correctOptionObject.description;
     }
 }
 
@@ -139,8 +139,8 @@ class CabelUnderBronTest extends OneInManySelectTest {
             return item.description;
         })
         super("", options, null, "???");
-        this.correctOptionObject = RandomSelect(optionsObjects);
-        this.CorrectOption = this.correctOptionObject.Description;
+        this.correctOptionObject = RandomSelectOne(optionsObjects);
+        this.correctOption = this.correctOptionObject.description;
     }
 }
 
@@ -159,8 +159,8 @@ class CabelOuterCoverTest extends OneInManySelectTest {
             return item.description;
         })
         super("", options, null, "???");
-        this.correctOptionObject = RandomSelect(optionsObjects);
-        this.CorrectOption = this.correctOptionObject.Description;
+        this.correctOptionObject = RandomSelectOne(optionsObjects);
+        this.correctOption = this.correctOptionObject.description;
     }
 }
 
